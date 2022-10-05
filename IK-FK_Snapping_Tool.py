@@ -5,14 +5,14 @@ from bl_operators.presets import AddPresetBase
 
 bl_info = {
     # required
-    'name': 'IK-FK Snapping',
+    'name': 'IK-FK Snapping Tool',
     'blender': (3, 3, 0),
     'category': 'Animation',
     'location': 'View3D > Sidebar > IK-FK Snap',
     'version': (1, 0, 0),
     'author': 'Byron Mallett (Edited by Endertainer007)',
     'warning': '',
-    'description': 'Tools to perform IK to FK and FK to IK snapping for animators and riggers',
+    'description': 'Tools to perform IK to FK and FK to IK snapping',
 }
 
 def arma_items(self, context):
