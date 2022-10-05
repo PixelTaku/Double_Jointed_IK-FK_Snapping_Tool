@@ -5,13 +5,14 @@ from bl_operators.presets import AddPresetBase
 
 bl_info = {
     # required
-    'name': 'IK/FK Snapping',
-    'blender': (3, 1, 0),
+    'name': 'IK-FK Snapping Tool',
+    'blender': (3, 3, 0),
     'category': 'Animation',
-    # optional
+    'location': 'View3D > Sidebar > IK-FK Snap',
     'version': (1, 0, 0),
-    'author': 'Byron Mallett',
-    'description': 'Custom rig FK/IK snapping tools',
+    'author': 'Byron Mallett (Edited by Endertainer007)',
+    'warning': 'Experimental Version',
+    'description': 'Blender add-on to perform IK to FK and FK to IK matching for animators and riggers',
 }
 
 def arma_items(self, context):
@@ -49,7 +50,7 @@ class FKIKSnapPanel(bpy.types.Panel):
     bl_label = 'FK to IK snapping'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'FK/IK Snap'
+    bl_category = 'IK-FK Snap'
     
     def draw_header_preset(self, _context): 
         MY_PT_presets.draw_panel_header(self.layout)
@@ -74,10 +75,10 @@ class FKIKSnapPanel(bpy.types.Panel):
 
 class FKIKMappingPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_fk_to_ik_mapping'
-    bl_label = 'FK/IK bones'
+    bl_label = 'IK-FK Bones'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'FK/IK Snap'
+    bl_category = 'IK-FK Snap'
     
     def draw_header_preset(self, _context): 
         MY_PT_presets.draw_panel_header(self.layout)
@@ -95,9 +96,11 @@ class FKIKMappingPanel(bpy.types.Panel):
             col.prop_search(context.scene, "IK_control_end_name", arma, "bones")
             col.prop_search(context.scene, "IK_control_name", arma, "bones")
             col.prop_search(context.scene, "IK_control_pole_name", arma, "bones")
+            col.prop_search(context.scene, "IK_control_target_name", arma, "bones")
+            col.prop_search(context.scene, "IK_control_pole_target_name", arma, "bones")
 
 
-class SnapIKToFKOperator(bpy.types.Operator):
+class SnapIKtoFKOperator(bpy.types.Operator):
     bl_idname = 'opr.snap_ik_to_fk_operator'
     bl_label = 'Snap IK to FK'
 
@@ -113,36 +116,33 @@ class SnapIKToFKOperator(bpy.types.Operator):
         for frame in range(start_frame, end_frame):
             bpy.context.scene.frame_set(frame)
             self.snap_IK_to_FK(
-                arma,
-                arma.pose.bones[context.scene.FK_control_upper_name],
-                arma.pose.bones[context.scene.FK_control_lower_name],
+                arma.pose.bones[context.scene.IK_control_pole_target_name],
+                arma.pose.bones[context.scene.IK_control_target_name],
                 arma.pose.bones[context.scene.FK_control_end_name],
+                arma.pose.bones[context.scene.IK_control_pole_name],
                 arma.pose.bones[context.scene.IK_control_name],
-                arma.pose.bones[context.scene.IK_control_pole_name]
+                arma.pose.bones[context.scene.IK_control_end_name],
             )
             
             if context.scene.use_frame_range:
-                arma.pose.bones[context.scene.IK_control_name].keyframe_insert('location', frame=frame)
-                arma.pose.bones[context.scene.IK_control_name].keyframe_insert('rotation_quaternion', frame=frame)
                 arma.pose.bones[context.scene.IK_control_pole_name].keyframe_insert('location', frame=frame)
                 arma.pose.bones[context.scene.IK_control_pole_name].keyframe_insert('rotation_quaternion', frame=frame)
+                arma.pose.bones[context.scene.IK_control_name].keyframe_insert('location', frame=frame)
+                arma.pose.bones[context.scene.IK_control_name].keyframe_insert('rotation_quaternion', frame=frame)
+                arma.pose.bones[context.scene.IK_control_end_name].keyframe_insert('location', frame=frame)
+                arma.pose.bones[context.scene.IK_control_end_name].keyframe_insert('rotation_quaternion', frame=frame)
             
         return {'FINISHED'}
     
-    def snap_IK_to_FK(self, armature, FK_upper, FK_lower, FK_end, IK_eff, IK_pole):
-        
-        # Set IK effector matrix relative to the original FK end bone in armature space
-        IK_relative_to_Fk = FK_end.bone.matrix_local.inverted() @ IK_eff.bone.matrix_local
-        IK_eff.matrix = FK_end.matrix @ IK_relative_to_Fk
+    def snap_IK_to_FK(self, IK_pole_target, IK_target, FK_end, IK_pole, IK_effector, IK_end):
+        IK_pole.matrix = IK_pole_target.matrix
         bpy.context.view_layer.update()
         
-        # Get the vector bisecting each FK control (object space)
-        PV_normal = ((FK_lower.vector.normalized() + FK_upper.vector.normalized() * -1)).normalized()
+        IK_effector.matrix = IK_target.matrix
+        bpy.context.view_layer.update()
         
-        # We push the pole control in the opposite direction of the FK bisecting vector (object space)
-        PV_matrix_loc = FK_lower.matrix.to_translation() + (PV_normal * -0.2)
-        PV_matrix = Matrix.LocRotScale(PV_matrix_loc, IK_pole.matrix.to_quaternion(), None)
-        IK_pole.matrix = PV_matrix
+        IK_relative_to_FK = FK_end.bone.matrix_local.inverted() @ IK_end.bone.matrix_local
+        IK_end.matrix = FK_end.matrix @ IK_relative_to_FK
 
 
 class SnapFKtoIKOperator(bpy.types.Operator):
@@ -211,7 +211,9 @@ class AddLimbPresetOperator(AddPresetBase, bpy.types.Operator):
                         'scene.IK_control_lower_name',
                         'scene.IK_control_end_name',
                         'scene.IK_control_name',
-                        'scene.IK_control_pole_name'
+                        'scene.IK_control_pole_name',
+                        'scene.IK_control_target_name',
+                        'scene.IK_control_pole_target_name'
                     ]
 
     # Directory to store the presets
@@ -238,21 +240,23 @@ PROPS = [
     ('armature_search', bpy.props.EnumProperty(items=arma_items, update=arma_upd)),
     ('bone_collection', bpy.props.CollectionProperty(type=bpy.types.PropertyGroup)),
     ('armature_name', bpy.props.StringProperty(name='Armature')),
-    ('FK_control_upper_name', bpy.props.StringProperty(name='FK upper')),
-    ('FK_control_lower_name', bpy.props.StringProperty(name='FK lower')),
-    ('FK_control_end_name', bpy.props.StringProperty(name='FK end')),
-    ('IK_control_name', bpy.props.StringProperty(name='IK effector')),
-    ('IK_control_pole_name', bpy.props.StringProperty(name='IK pole')),
-    ('IK_control_upper_name', bpy.props.StringProperty(name='IK upper')),
-    ('IK_control_lower_name', bpy.props.StringProperty(name='IK lower')),
-    ('IK_control_end_name', bpy.props.StringProperty(name='IK end')),
+    ('FK_control_upper_name', bpy.props.StringProperty(name='FK Upper')),
+    ('FK_control_lower_name', bpy.props.StringProperty(name='FK Lower')),
+    ('FK_control_end_name', bpy.props.StringProperty(name='FK End')),
+    ('IK_control_name', bpy.props.StringProperty(name='IK Effector')),
+    ('IK_control_pole_name', bpy.props.StringProperty(name='IK Pole')),
+    ('IK_control_upper_name', bpy.props.StringProperty(name='IK Upper')),
+    ('IK_control_lower_name', bpy.props.StringProperty(name='IK Lower')),
+    ('IK_control_end_name', bpy.props.StringProperty(name='IK End')),
+    ('IK_control_target_name', bpy.props.StringProperty(name='IK Target')),
+    ('IK_control_pole_target_name', bpy.props.StringProperty(name='IK Pole Target')),
     ('use_frame_range', bpy.props.BoolProperty(name='Key across frame range', default=False)),
     ('start_frame', bpy.props.IntProperty(name='Start frame', default=0)),
     ('end_frame', bpy.props.IntProperty(name='End frame', default=0)),
 ]
 
 CLASSES = [
-    SnapIKToFKOperator,
+    SnapIKtoFKOperator,
     SnapFKtoIKOperator,
     AddLimbPresetOperator,
     FKIKSnapPanel,
