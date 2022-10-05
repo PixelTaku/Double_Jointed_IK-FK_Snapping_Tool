@@ -9,7 +9,7 @@ bl_info = {
     'blender': (3, 3, 0),
     'category': 'Animation',
     'location': 'View3D > Sidebar > IK-FK Snap',
-    'version': (1, 0, 0),
+    'version': (1, 1, 0),
     'author': 'Byron Mallett (Edited by Endertainer007)',
     'warning': '',
     'description': 'Tools to perform IK to FK and FK to IK snapping',
@@ -33,19 +33,19 @@ def arma_upd(self, context):
 class MT_LimbPresets(bpy.types.Menu): 
     bl_label = 'Limb Presets' 
     bl_idname = 'MT_LimbPresets'
-    preset_subdir = 'object/FKIKSnap_presets' 
+    preset_subdir = 'IK-FK_Snapping_Tool/Armature_&_Bones_Presets'
     preset_operator = 'script.execute_preset' 
     draw = bpy.types.Menu.draw_preset
     
     
-class MY_PT_presets(PresetPanel, bpy.types.Panel):
+class MY_PT_Presets(PresetPanel, bpy.types.Panel):
     bl_label = 'Limb Presets'
-    preset_subdir = 'object/FKIKSnap_presets'
+    preset_subdir = 'IK-FK_Snapping_Tool/Armature_&_Bones_Presets'
     preset_operator = 'script.execute_preset'
     preset_add_operator = 'my.add_preset'
 
 
-class FKIKSnapPanel(bpy.types.Panel):
+class IKFKSnapPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_fk_to_ik_snap'
     bl_label = 'IK-FK Snapping'
     bl_space_type = 'VIEW_3D'
@@ -53,7 +53,7 @@ class FKIKSnapPanel(bpy.types.Panel):
     bl_category = 'IK-FK Snap'
     
     def draw_header_preset(self, _context): 
-        MY_PT_presets.draw_panel_header(self.layout)
+        MY_PT_Presets.draw_panel_header(self.layout)
     
     def draw(self, context):
         col = self.layout.column()
@@ -73,7 +73,7 @@ class FKIKSnapPanel(bpy.types.Panel):
             snap_fk_to_ik_operator = grid.operator('opr.snap_fk_to_ik_operator', text='Snap to IK')
             
 
-class FKIKMappingPanel(bpy.types.Panel):
+class IKFKMappingPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_fk_to_ik_mapping'
     bl_label = 'Armature & Bones'
     bl_space_type = 'VIEW_3D'
@@ -81,7 +81,7 @@ class FKIKMappingPanel(bpy.types.Panel):
     bl_category = 'IK-FK Snap'
     
     def draw_header_preset(self, _context): 
-        MY_PT_presets.draw_panel_header(self.layout)
+        MY_PT_Presets.draw_panel_header(self.layout)
     
     def draw(self, context):
         col = self.layout.column()
@@ -217,7 +217,7 @@ class AddLimbPresetOperator(AddPresetBase, bpy.types.Operator):
                     ]
 
     # Directory to store the presets
-    preset_subdir = 'object/FKIKSnap_presets'
+    preset_subdir = 'IK-FK_Snapping_Tool/Armature_&_Bones_Presets'
     
 
 def register():
@@ -259,9 +259,9 @@ CLASSES = [
     SnapIKtoFKOperator,
     SnapFKtoIKOperator,
     AddLimbPresetOperator,
-    FKIKSnapPanel,
-    FKIKMappingPanel,
-    MY_PT_presets, 
+    IKFKSnapPanel,
+    IKFKMappingPanel,
+    MY_PT_Presets, 
     MT_LimbPresets
 ]
 
