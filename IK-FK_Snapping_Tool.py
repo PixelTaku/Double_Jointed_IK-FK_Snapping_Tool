@@ -12,7 +12,7 @@ bl_info = {
     'version': (1, 0, 0),
     'author': 'Byron Mallett (Edited by Endertainer007)',
     'warning': '',
-    'description': 'Custom rig FK-IK snapping tools',
+    'description': 'Tools to perform IK to FK and FK to IK snapping for animators and riggers',
 }
 
 def arma_items(self, context):
