@@ -5,14 +5,14 @@ from bl_operators.presets import AddPresetBase
 
 bl_info = {
     # required
-    'name': 'IK-FK Snapping Tool',
+    'name': 'IK-FK Snapping',
     'blender': (3, 3, 0),
     'category': 'Animation',
     'location': 'View3D > Sidebar > IK-FK Snap',
     'version': (1, 0, 0),
     'author': 'Byron Mallett (Edited by Endertainer007)',
-    'warning': 'Experimental Version',
-    'description': 'Blender add-on to perform IK to FK and FK to IK matching for animators and riggers',
+    'warning': '',
+    'description': 'Custom rig FK-IK snapping tools',
 }
 
 def arma_items(self, context):
@@ -47,7 +47,7 @@ class MY_PT_presets(PresetPanel, bpy.types.Panel):
 
 class FKIKSnapPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_fk_to_ik_snap'
-    bl_label = 'FK to IK snapping'
+    bl_label = 'IK-FK Snapping'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'IK-FK Snap'
@@ -65,17 +65,17 @@ class FKIKSnapPanel(bpy.types.Panel):
         row = row.row()
         row.prop(context.scene, "end_frame")
         row.enabled = context.scene.use_frame_range
-        
+
+        grid = self.layout.grid_flow(columns=2, align=True)
         if context.scene.FK_control_upper_name and context.scene.FK_control_lower_name:
-            snap_ik_to_fk_operator = col.operator('opr.snap_ik_to_fk_operator', text='Snap IK to FK')
-        
+            snap_ik_to_fk_operator = grid.operator('opr.snap_ik_to_fk_operator', text='Snap to FK')
         if context.scene.IK_control_upper_name and context.scene.IK_control_lower_name:
-            snap_fk_to_ik_operator = col.operator('opr.snap_fk_to_ik_operator', text='Snap FK to IK')
+            snap_fk_to_ik_operator = grid.operator('opr.snap_fk_to_ik_operator', text='Snap to IK')
             
 
 class FKIKMappingPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_fk_to_ik_mapping'
-    bl_label = 'IK-FK Bones'
+    bl_label = 'Armature & Bones'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'IK-FK Snap'
@@ -102,7 +102,7 @@ class FKIKMappingPanel(bpy.types.Panel):
 
 class SnapIKtoFKOperator(bpy.types.Operator):
     bl_idname = 'opr.snap_ik_to_fk_operator'
-    bl_label = 'Snap IK to FK'
+    bl_label = 'Snap to FK'
 
     def execute(self, context):
         arma = bpy.data.objects[context.scene.armature_name]
@@ -147,7 +147,7 @@ class SnapIKtoFKOperator(bpy.types.Operator):
 
 class SnapFKtoIKOperator(bpy.types.Operator):
     bl_idname = 'opr.snap_fk_to_ik_operator'
-    bl_label = 'Snap FK to IK'
+    bl_label = 'Snap to IK'
 
     def execute(self, context):
         arma = bpy.data.objects[context.scene.armature_name]
