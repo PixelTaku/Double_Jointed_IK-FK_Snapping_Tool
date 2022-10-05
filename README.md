@@ -5,7 +5,7 @@ IK-FK Snapping Tool is a Blender add-on that allows you to snap the IK and FK co
 
 This version of the add-on is a forked version of the original IK-FK-Snapping-for-Blender add-on by [Mystfit](https://github.com/Mystfit). This forked version comes with some modifications and improvements over the original version. One of the improvement added in this version is the addition of IK Target and IK Pole Target fields.
 
-## Add-on guide
+## Instruction
 - To start using the add-on, install the IK-FK_Snapping_Tool.py file.
 - In the viewport, go to the Sidebar > IK-FK Snap tab.
 - In the Armature & Bones panel, enter the name of the Armature you want to target in the Armature field (Note that your rig needs to have the same Armature and Object name. Otherwise, the add-on wouldn't work).
