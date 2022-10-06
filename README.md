@@ -1,4 +1,4 @@
-# IK-FK Snapping Tool ![version](https://img.shields.io/badge/version-Release-success) ![license](https://img.shields.io/badge/license-MIT-informational)
+# IK-FK Snapping Tool ![Latest Release (latest SemVer)](https://img.shields.io/github/v/release/Endertainer/IK-FK_Snapping_Tool?color=important&label=Latest%20Release) ![License](https://img.shields.io/badge/License-MIT-informational) ![Downloads](https://img.shields.io/github/downloads/Endertainer/IK-FK_Snapping_Tool/total?color=lightgrey&label=Downloads)
 
 ## Introduction
 IK-FK Snapping Tool is a Blender add-on that allows you to snap the IK and FK control from IK to FK and vice versa.
