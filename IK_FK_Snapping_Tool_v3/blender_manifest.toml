@@ -1,0 +1,12 @@
+schema_version = "1.0.0"
+id = "ik_fk_snapping_tool"
+version = "3.0.0"
+name = "IK-FK Snapping Tool"
+tagline = "Tools to perform IK to FK and FK to IK snapping"
+maintainer = "Endertainer007 <endertainer@protonmail.com>"
+type = "add-on"
+website = "https://github.com/Endertainer/IK-FK_Snapping_Tool"
+tags = ["Animation", "Rigging"]
+blender_version_min = "4.2.0"
+license = ["SPDX:MIT"]
+copyright = ["2022 Byron Mallett", "2024 Endertainer007"]
