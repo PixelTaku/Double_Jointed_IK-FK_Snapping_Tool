@@ -13,4 +13,4 @@ With this tool, you can easily snap from IK to FK and FK to IK with just a press
 - Open the preset menu by clicking an icon on the add-on panel header (the one with the dots and stripes).
 - Set a name for your snapping preset and save it by clicking the + icon.
 
-If you encounter a bug or have any questions, you can raise an [issue](https://github.com/Endertainer/IK-FK_Snapping_Tool/issues/new) on the Github repository or join my [Discord](https://discord.com/invite/Xk7RxPq9R5) server.
+If you encounter a bug or problems, you can raise an [issue](https://github.com/Endertainer/IK-FK_Snapping_Tool/issues/new) on the Github repository or join my [Discord](https://discord.com/invite/Xk7RxPq9R5) server.
