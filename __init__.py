@@ -1,5 +1,5 @@
 #  This file is part of IK-FK_Snapping_Tool.
-#  Copyright (C) Endertainer007 2024.
+#  Copyright (C) Ravi Prathama 2024.
 #  
 #  This file was originally part of IK-FK-Snapping-for-Blender,
 #  licensed under the MIT License. It has been modified and
