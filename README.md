@@ -1,6 +1,6 @@
 # IK-FK Snapping Tool ![Latest Release (latest SemVer)](https://img.shields.io/github/v/release/Endertainer/IK-FK_Snapping_Tool?color=important&label=Latest%20Release) ![License](https://img.shields.io/github/license/Endertainer/IK-FK_Snapping_Tool?color=informational&label=License&branch=gpl-version) ![Downloads](https://img.shields.io/github/downloads/Endertainer/IK-FK_Snapping_Tool/total?color=lightgrey&label=Downloads)
 
-![banner](./IK-FK_Banner.png)
+![banner](./Banner.png)
 
 ## Introduction
 IK-FK Snapping Tool is a simple Blender add-on that lets you match poses between IK/FK controls. This add-on is a fork version of the [IK-FK Snapping](https://github.com/Mystfit/IK-FK-Snapping-for-Blender) add-on by [Mystfit](https://github.com/Mystfit) that adds additional snapping options and improved UI.
