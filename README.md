@@ -1,5 +1,4 @@
-# IK-FK Snapping Tool ![Latest Release (latest SemVer)](https://img.shields.io/github/v/release/Endertainer/IK-FK_Snapping_Tool?color=important&label=Latest%20Release) ![License](https://img.shields.io/github/license/Endertainer/IK-FK_Snapping_Tool?color=informational&label=License&branch=gpl-version) ![Downloads](https://img.shields.io/github/downloads/Endertainer/IK-FK_Snapping_Tool/total?color=lightgrey&label=Downloads)
-
+# IK-FK Snapping Tool
 ![banner](./Banner.png)
 
 ## Introduction
