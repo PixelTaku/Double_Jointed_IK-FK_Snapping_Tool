@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 id = "dj_ik_fk_snapping_tool"
-version = "3.0.3a"
+version = "1.0.0"
 name = "Double Jointed IK-FK Snapping Tool"
 tagline = "Tools to perform IK to FK and FK to IK snapping with added knees"
 maintainer = "PixelTaku <BSKY: pixeltaku.bsky.social>"
