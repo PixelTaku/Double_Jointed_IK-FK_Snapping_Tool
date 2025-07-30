@@ -53,25 +53,26 @@ def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, FK_end, IK_pole, IK_c
     IK_control.matrix = IK_target.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
-    IK_control.keyframe_insert()
+    IK_control.keyframe_insert(KEYFRAME)
 
     # Match the IK pole's matrix to the IK pole target's matrix
     IK_pole.matrix = IK_pole_target.matrix.copy()
     # Update the viewport to reflect the changes
     bpy.context.view_layer.update()
-    IK_pole.keyframe_insert()
+    IK_pole.keyframe_insert(KEYFRAME)
     
     # Match the IK end's matrix to the FK end's matrix
     IK_end.matrix = FK_end.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
-    IK_end.keyframe_insert()
+    IK_end.keyframe_insert(KEYFRAME)
 
     """
     # Match the IK knee's matrix to the FK knee's matrix
     IK_knee.matrix = FK_knee.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
+    IK_knee.keyframe_insert(KEYFRAME)
     """
 
 # Snaps FK bones to match the IK pose
