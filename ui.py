@@ -66,6 +66,8 @@ class ToolPanel(bpy.types.Panel):
                 obj.pose.bones.get(scene.IK_Leg_Target_L),
                 obj.pose.bones.get(scene.FK_Leg_Knee_L),
                 obj.pose.bones.get(scene.FK_Leg_End_L),
+                obj.pose.bones.get(scene.TWEAK_Leg_Knee_L),
+                obj.pose.bones.get(scene.TWEAK_Leg_Lower_L),
                 obj.pose.bones.get(scene.IK_Leg_Pole_L),
                 obj.pose.bones.get(scene.IK_Leg_Control_L),
                 obj.pose.bones.get(scene.IK_Leg_Knee_L),
@@ -80,7 +82,9 @@ class ToolPanel(bpy.types.Panel):
                 obj.pose.bones.get(scene.FK_Leg_Upper_L),
                 obj.pose.bones.get(scene.FK_Leg_Knee_L),
                 obj.pose.bones.get(scene.FK_Leg_Lower_L),
-                obj.pose.bones.get(scene.FK_Leg_End_L)
+                obj.pose.bones.get(scene.FK_Leg_End_L),
+                obj.pose.bones.get(scene.TWEAK_Leg_Knee_L),
+                obj.pose.bones.get(scene.TWEAK_Leg_Lower_L)
             }
             # Bones needed for IK to FK snapping on right leg
             IKtoFK_LegR_Bones = {
@@ -91,7 +95,9 @@ class ToolPanel(bpy.types.Panel):
                 obj.pose.bones.get(scene.IK_Leg_Pole_R),
                 obj.pose.bones.get(scene.IK_Leg_Control_R),
                 obj.pose.bones.get(scene.IK_Leg_Knee_R),
-                obj.pose.bones.get(scene.IK_Leg_End_R)
+                obj.pose.bones.get(scene.IK_Leg_End_R),
+                obj.pose.bones.get(scene.TWEAK_Leg_Knee_R),
+                obj.pose.bones.get(scene.TWEAK_Leg_Lower_R)
             }
             # Bones needed for FK to IK snapping on right leg
             FKtoIK_LegR_Bones = {
@@ -102,7 +108,9 @@ class ToolPanel(bpy.types.Panel):
                 obj.pose.bones.get(scene.FK_Leg_Upper_R),
                 obj.pose.bones.get(scene.FK_Leg_Knee_R),
                 obj.pose.bones.get(scene.FK_Leg_Lower_R),
-                obj.pose.bones.get(scene.FK_Leg_End_R)
+                obj.pose.bones.get(scene.FK_Leg_End_R),
+                obj.pose.bones.get(scene.TWEAK_Leg_Knee_L),
+                obj.pose.bones.get(scene.TWEAK_Leg_Lower_L)
             }
 
             # Check if any relevant bones are found
@@ -304,7 +312,9 @@ class LegL_MappingPanel(bpy.types.Panel):
             # Create bone selection fields for each bone involved in Arm L snapping
             col.prop_search(context.scene, "FK_Leg_Upper_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Knee_L", obj.data, "bones")
+            col.prop_search(context.scene, "TWEAK_Leg_Knee_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Lower_L", obj.data, "bones")
+            col.prop_search(context.scene, "TWEAK_Leg_Lower_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_End_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Upper_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Knee_L", obj.data, "bones")
@@ -339,7 +349,9 @@ class LegR_MappingPanel(bpy.types.Panel):
             # Create bone selection fields for each bone involved in Arm L snapping
             col.prop_search(context.scene, "FK_Leg_Upper_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Knee_R", obj.data, "bones")
+            col.prop_search(context.scene, "TWEAK_Leg_Knee_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Lower_R", obj.data, "bones")
+            col.prop_search(context.scene, "TWEAK_Leg_Lower_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_End_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Upper_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Knee_R", obj.data, "bones")

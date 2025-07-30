@@ -48,7 +48,7 @@ def snap_IK_to_FK(IK_pole_target, IK_target, FK_end, IK_pole, IK_control, IK_end
     bpy.context.view_layer.update()
 
 # Snaps IK bones to match the FK pose with added Knee
-def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, FK_end, IK_pole, IK_control, IK_knee, IK_end):
+def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, TWEAK_knee, FK_lower, FK_end, IK_pole, IK_control, IK_knee, IK_end, IK_lower, TWEAK_lower):
     # Match the IK control's matrix to the IK target's matrix
     IK_control.matrix = IK_target.matrix.copy()
     # Update the viewport to reflect the change
@@ -74,6 +74,13 @@ def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, FK_end, IK_pole, IK_c
     bpy.context.view_layer.update()
     IK_knee.keyframe_insert(KEYFRAME)
     """
+    # match the TWEAK knee and TWEAK lower to the FK Knee and FK lower respectively
+    TWEAK_lower.matrix = FK_lower.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+    TWEAK_knee.matrix = FK_knee.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
 
 # Snaps FK bones to match the IK pose
 def snap_FK_to_IK(IK_upper, IK_lower, IK_end, FK_upper, FK_lower, FK_end):
@@ -93,7 +100,7 @@ def snap_FK_to_IK(IK_upper, IK_lower, IK_end, FK_upper, FK_lower, FK_end):
     bpy.context.view_layer.update()
 
 # Snaps FK bones to match the IK pose with added Knee
-def snap_FK_to_IK_knee(IK_upper, IK_knee, IK_lower, IK_end, FK_upper, FK_knee, FK_lower, FK_end):
+def snap_FK_to_IK_knee(IK_upper, IK_knee, TWEAK_knee, IK_lower, TWEAK_lower, IK_end, FK_upper, FK_knee, FK_lower, FK_end):
     # Match the FK upper's matrix to the IK upper's matrix
     FK_upper.matrix = IK_upper.matrix.copy()
     # Update the viewport to reflect the change
@@ -101,11 +108,13 @@ def snap_FK_to_IK_knee(IK_upper, IK_knee, IK_lower, IK_end, FK_upper, FK_knee, F
 
     # Match the FK knee's matrix to the IK knee's matrix
     FK_knee.matrix = IK_knee.matrix.copy()
+    FK_knee.matrix = TWEAK_knee.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     
     # Match the FK lower's matrix to the IK lower's matrix
     FK_lower.matrix = IK_lower.matrix.copy()
+    FK_lower.matrix = TWEAK_lower.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
 
@@ -165,6 +174,11 @@ PROPS = [
     ('FK_Leg_Knee_R', bpy.props.StringProperty(name='FK Knee')),
     ('IK_Leg_Knee_L', bpy.props.StringProperty(name='IK Knee')),
     ('IK_Leg_Knee_R', bpy.props.StringProperty(name='IK Knee')),
+
+    ('TWEAK_Knee_R', bpy.props.StringProperty(name='TWEAK Knee')),
+    ('TWEAK_Lower_R', bpy.props.StringProperty(name='TWEAK Lower')),
+    ('TWEAK_Knee_L', bpy.props.StringProperty(name='TWEAK Knee')),
+    ('TWEAK_Lower_L', bpy.props.StringProperty(name='TWEAK Lower'))
 ]
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

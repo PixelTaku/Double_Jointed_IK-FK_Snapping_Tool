@@ -176,11 +176,15 @@ class LegL_IKtoFK(bpy.types.Operator):
             context.scene.IK_Leg_Pole_Target_L,
             context.scene.IK_Leg_Target_L,
             context.scene.FK_Leg_Knee_L,
+            context.scene.TWEAK_Leg_Knee_L,
+            context.scene.FK_Leg_Lower_L,
             context.scene.FK_Leg_End_L,
             context.scene.IK_Leg_Pole_L,
             context.scene.IK_Leg_Control_L,
             context.scene.IK_Leg_Knee_L,
-            context.scene.IK_Leg_End_L
+            context.scene.IK_Leg_End_L,
+            context.scene.IK_Leg_Lower_L,
+            context.scene.TWEAK_Leg_Lower_L
         ]
         # Get the bone objects and perform error checking
         bones = utilities.get_bones_with_check(context, bone_names)
@@ -202,7 +206,9 @@ class LegL_FKtoIK(bpy.types.Operator):
         bone_names = [
             context.scene.IK_Leg_Upper_L,
             context.scene.IK_Leg_Knee_L,
+            context.scene.TWEAK_Leg_Knee_L,
             context.scene.IK_Leg_Lower_L,
+            context.scene.TWEAK_Leg_Lower_L,
             context.scene.IK_Leg_End_L,
             context.scene.FK_Leg_Upper_L,
             context.scene.FK_Leg_Knee_L,
@@ -234,11 +240,15 @@ class LegR_IKtoFK(bpy.types.Operator):
             context.scene.IK_Leg_Pole_Target_R,
             context.scene.IK_Leg_Target_R,
             context.scene.FK_Leg_Knee_R,
+            context.scene.TWEAK_Leg_Knee_R,
+            context.scene.FK_Leg_Lower_R,
             context.scene.FK_Leg_End_R,
             context.scene.IK_Leg_Pole_R, 
             context.scene.IK_Leg_Control_R,
             context.scene.IK_Leg_Knee_R,
+            context.scene.IK_Leg_Lower_R,
             context.scene.IK_Leg_End_R
+            context.scene.TWEAK_Leg_Lower_R
         ]
         # Get the bone objects and perform error checking
         bones = utilities.get_bones_with_check(context, bone_names)
@@ -260,7 +270,9 @@ class LegR_FKtoIK(bpy.types.Operator):
         bone_names = [
             context.scene.IK_Leg_Upper_R,
             context.scene.IK_Leg_Knee_R,
+            context.scene.TWEAK_Leg_Knee_R,
             context.scene.IK_Leg_Lower_R,
+            context.scene.TWEAK_Leg_Lower_R,
             context.scene.IK_Leg_End_R,
             context.scene.FK_Leg_Upper_R,
             context.scene.FK_Leg_Knee_R,
@@ -318,7 +330,9 @@ class PresetAdd(AddPresetBase, bpy.types.Operator):
                         'scene.FK_Leg_End_L',
                         'scene.IK_Leg_Upper_L',
                         'scene.IK_Leg_Knee_L',
+                        'scene.TWEAK_Leg_Knee_L',
                         'scene.IK_Leg_Lower_L',
+                        'scene.TWEAK_Leg_Lower_L',
                         'scene.IK_Leg_End_L',
                         'scene.IK_Leg_Control_L',
                         'scene.IK_Leg_Pole_L',
@@ -326,7 +340,9 @@ class PresetAdd(AddPresetBase, bpy.types.Operator):
                         'scene.IK_Leg_Pole_Target_L',
                         'scene.FK_Leg_Upper_R',
                         'scene.FK_Leg_Knee_R',
+                        'scene.TWEAK_Leg_Knee_R',
                         'scene.FK_Leg_Lower_R',
+                        'scene.TWEAK_Leg_Lower_R',
                         'scene.FK_Leg_End_R',
                         'scene.IK_Leg_Upper_R',
                         'scene.IK_Leg_Knee_R',
