@@ -64,17 +64,21 @@ class ToolPanel(bpy.types.Panel):
             IKtoFK_LegL_Bones = {
                 obj.pose.bones.get(scene.IK_Leg_Pole_Target_L),
                 obj.pose.bones.get(scene.IK_Leg_Target_L),
+                obj.pose.bones.get(scene.FK_Leg_Knee_L),
                 obj.pose.bones.get(scene.FK_Leg_End_L),
                 obj.pose.bones.get(scene.IK_Leg_Pole_L),
                 obj.pose.bones.get(scene.IK_Leg_Control_L),
+                obj.pose.bones.get(scene.IK_Leg_Knee_L),
                 obj.pose.bones.get(scene.IK_Leg_End_L)
             }
             # Bones needed for FK to IK snapping on left leg
             FKtoIK_LegL_Bones = {
                 obj.pose.bones.get(scene.IK_Leg_Upper_L),
+                obj.pose.bones.get(scene.IK_Leg_Knee_L),
                 obj.pose.bones.get(scene.IK_Leg_Lower_L),
                 obj.pose.bones.get(scene.IK_Leg_End_L),
                 obj.pose.bones.get(scene.FK_Leg_Upper_L),
+                obj.pose.bones.get(scene.FK_Leg_Knee_L),
                 obj.pose.bones.get(scene.FK_Leg_Lower_L),
                 obj.pose.bones.get(scene.FK_Leg_End_L)
             }
@@ -82,17 +86,21 @@ class ToolPanel(bpy.types.Panel):
             IKtoFK_LegR_Bones = {
                 obj.pose.bones.get(scene.IK_Leg_Pole_Target_R),
                 obj.pose.bones.get(scene.IK_Leg_Target_R),
+                obj.pose.bones.get(scene.FK_Leg_Knee_R),
                 obj.pose.bones.get(scene.FK_Leg_End_R),
                 obj.pose.bones.get(scene.IK_Leg_Pole_R),
                 obj.pose.bones.get(scene.IK_Leg_Control_R),
+                obj.pose.bones.get(scene.IK_Leg_Knee_R),
                 obj.pose.bones.get(scene.IK_Leg_End_R)
             }
             # Bones needed for FK to IK snapping on right leg
             FKtoIK_LegR_Bones = {
                 obj.pose.bones.get(scene.IK_Leg_Upper_R),
+                obj.pose.bones.get(scene.IK_Leg_Knee_R),
                 obj.pose.bones.get(scene.IK_Leg_Lower_R),
                 obj.pose.bones.get(scene.IK_Leg_End_R),
                 obj.pose.bones.get(scene.FK_Leg_Upper_R),
+                obj.pose.bones.get(scene.FK_Leg_Knee_R),
                 obj.pose.bones.get(scene.FK_Leg_Lower_R),
                 obj.pose.bones.get(scene.FK_Leg_End_R)
             }
@@ -295,9 +303,11 @@ class LegL_MappingPanel(bpy.types.Panel):
         if obj and obj.type == 'ARMATURE':
             # Create bone selection fields for each bone involved in Arm L snapping
             col.prop_search(context.scene, "FK_Leg_Upper_L", obj.data, "bones")
+            col.prop_search(context.scene, "FK_Leg_Knee_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Lower_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_End_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Upper_L", obj.data, "bones")
+            col.prop_search(context.scene, "IK_Leg_Knee_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Lower_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_End_L", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Control_L", obj.data, "bones")
@@ -328,9 +338,11 @@ class LegR_MappingPanel(bpy.types.Panel):
         if obj and obj.type == 'ARMATURE':
             # Create bone selection fields for each bone involved in Arm L snapping
             col.prop_search(context.scene, "FK_Leg_Upper_R", obj.data, "bones")
+            col.prop_search(context.scene, "FK_Leg_Knee_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Lower_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_End_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Upper_R", obj.data, "bones")
+            col.prop_search(context.scene, "IK_Leg_Knee_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Lower_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_End_R", obj.data, "bones")
             col.prop_search(context.scene, "IK_Leg_Control_R", obj.data, "bones")
