@@ -47,10 +47,54 @@ def snap_IK_to_FK(IK_pole_target, IK_target, FK_end, IK_pole, IK_control, IK_end
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
 
+# Snaps IK bones to match the FK pose with added Knee
+def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, FK_end, IK_pole, IK_control, IK_knee, IK_end):
+    # Match the IK control's matrix to the IK target's matrix
+    IK_control.matrix = IK_target.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+
+    # Match the IK pole's matrix to the IK pole target's matrix
+    IK_pole.matrix = IK_pole_target.matrix.copy()
+    # Update the viewport to reflect the changes
+    bpy.context.view_layer.update()
+
+    # Match the IK knee's matrix to the FK knee's matrix
+    IK_knee.matrix = FK_knee.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+    
+    # Match the IK end's matrix to the FK end's matrix
+    IK_end.matrix = FK_end.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+
 # Snaps FK bones to match the IK pose
 def snap_FK_to_IK(IK_upper, IK_lower, IK_end, FK_upper, FK_lower, FK_end):
     # Match the FK upper's matrix to the IK upper's matrix
     FK_upper.matrix = IK_upper.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+    
+    # Match the FK lower's matrix to the IK lower's matrix
+    FK_lower.matrix = IK_lower.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+
+    # Match the FK end's matrix to the IK end's matrix
+    FK_end.matrix = IK_end.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+
+# Snaps FK bones to match the IK pose with added Knee
+def snap_FK_to_IK_knee(IK_upper, IK_knee, IK_lower, IK_end, FK_upper, FK_knee, FK_lower, FK_end):
+    # Match the FK upper's matrix to the IK upper's matrix
+    FK_upper.matrix = IK_upper.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+
+    # Match the FK knee's matrix to the IK knee's matrix
+    FK_knee.matrix = IK_knee.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     
