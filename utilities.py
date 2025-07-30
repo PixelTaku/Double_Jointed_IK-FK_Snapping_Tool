@@ -175,10 +175,10 @@ PROPS = [
     ('IK_Leg_Knee_L', bpy.props.StringProperty(name='IK Knee')),
     ('IK_Leg_Knee_R', bpy.props.StringProperty(name='IK Knee')),
 
-    ('TWEAK_Knee_R', bpy.props.StringProperty(name='TWEAK Knee')),
-    ('TWEAK_Lower_R', bpy.props.StringProperty(name='TWEAK Lower')),
-    ('TWEAK_Knee_L', bpy.props.StringProperty(name='TWEAK Knee')),
-    ('TWEAK_Lower_L', bpy.props.StringProperty(name='TWEAK Lower'))
+    ('TWEAK_Leg_Knee_R', bpy.props.StringProperty(name='TWEAK Knee')),
+    ('TWEAK_Leg_Lower_R', bpy.props.StringProperty(name='TWEAK Lower')),
+    ('TWEAK_Leg_Knee_L', bpy.props.StringProperty(name='TWEAK Knee')),
+    ('TWEAK_Leg_Lower_L', bpy.props.StringProperty(name='TWEAK Lower'))
 ]
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
