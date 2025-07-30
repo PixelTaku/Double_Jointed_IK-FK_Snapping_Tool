@@ -175,9 +175,11 @@ class LegL_IKtoFK(bpy.types.Operator):
         bone_names = [
             context.scene.IK_Leg_Pole_Target_L,
             context.scene.IK_Leg_Target_L,
+            context.scene.FK_Leg_Knee_L,
             context.scene.FK_Leg_End_L,
             context.scene.IK_Leg_Pole_L,
             context.scene.IK_Leg_Control_L,
+            context.scene.IK_Leg_Knee_L,
             context.scene.IK_Leg_End_L
         ]
         # Get the bone objects and perform error checking
@@ -199,9 +201,11 @@ class LegL_FKtoIK(bpy.types.Operator):
         # Retrieve the names of the relevant bones from scene properties
         bone_names = [
             context.scene.IK_Leg_Upper_L,
+            context.scene.IK_Leg_Knee_L,
             context.scene.IK_Leg_Lower_L,
             context.scene.IK_Leg_End_L,
             context.scene.FK_Leg_Upper_L,
+            context.scene.FK_Leg_Knee_L,
             context.scene.FK_Leg_Lower_L,
             context.scene.FK_Leg_End_L 
         ]
@@ -229,9 +233,11 @@ class LegR_IKtoFK(bpy.types.Operator):
         bone_names = [
             context.scene.IK_Leg_Pole_Target_R,
             context.scene.IK_Leg_Target_R,
+            context.scene.FK_Leg_Knee_R,
             context.scene.FK_Leg_End_R,
             context.scene.IK_Leg_Pole_R, 
             context.scene.IK_Leg_Control_R,
+            context.scene.IK_Leg_Knee_R,
             context.scene.IK_Leg_End_R
         ]
         # Get the bone objects and perform error checking
@@ -253,9 +259,11 @@ class LegR_FKtoIK(bpy.types.Operator):
         # Retrieve the names of the relevant bones from scene properties
         bone_names = [
             context.scene.IK_Leg_Upper_R,
+            context.scene.IK_Leg_Knee_R,
             context.scene.IK_Leg_Lower_R,
             context.scene.IK_Leg_End_R,
             context.scene.FK_Leg_Upper_R,
+            context.scene.FK_Leg_Knee_R,
             context.scene.FK_Leg_Lower_R,
             context.scene.FK_Leg_End_R 
         ]
@@ -305,9 +313,11 @@ class PresetAdd(AddPresetBase, bpy.types.Operator):
                         'scene.IK_Arm_Target_R',
                         'scene.IK_Arm_Pole_Target_R',
                         'scene.FK_Leg_Upper_L',
+                        'scene.FK_Leg_Knee_L',
                         'scene.FK_Leg_Lower_L',
                         'scene.FK_Leg_End_L',
                         'scene.IK_Leg_Upper_L',
+                        'scene.IK_Leg_Knee_L',
                         'scene.IK_Leg_Lower_L',
                         'scene.IK_Leg_End_L',
                         'scene.IK_Leg_Control_L',
@@ -315,9 +325,11 @@ class PresetAdd(AddPresetBase, bpy.types.Operator):
                         'scene.IK_Leg_Target_L',
                         'scene.IK_Leg_Pole_Target_L',
                         'scene.FK_Leg_Upper_R',
+                        'scene.FK_Leg_Knee_R',
                         'scene.FK_Leg_Lower_R',
                         'scene.FK_Leg_End_R',
                         'scene.IK_Leg_Upper_R',
+                        'scene.IK_Leg_Knee_R',
                         'scene.IK_Leg_Lower_R',
                         'scene.IK_Leg_End_R',
                         'scene.IK_Leg_Control_R',
