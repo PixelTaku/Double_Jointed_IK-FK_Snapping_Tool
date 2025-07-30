@@ -247,7 +247,7 @@ class LegR_IKtoFK(bpy.types.Operator):
             context.scene.IK_Leg_Control_R,
             context.scene.IK_Leg_Knee_R,
             context.scene.IK_Leg_Lower_R,
-            context.scene.IK_Leg_End_R
+            context.scene.IK_Leg_End_R,
             context.scene.TWEAK_Leg_Lower_R
         ]
         # Get the bone objects and perform error checking
