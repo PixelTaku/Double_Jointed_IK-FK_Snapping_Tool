@@ -108,7 +108,13 @@ PROPS = [
     ('IK_Leg_Control_R', bpy.props.StringProperty(name='IK Control')),
     ('IK_Leg_Pole_R', bpy.props.StringProperty(name='IK Pole')),
     ('IK_Leg_Target_R', bpy.props.StringProperty(name='IK Target')),
-    ('IK_Leg_Pole_Target_R', bpy.props.StringProperty(name='IK Pole Target'))
+    ('IK_Leg_Pole_Target_R', bpy.props.StringProperty(name='IK Pole Target')),
+
+    # Additional properties for double jointed legs
+    ('FK_Leg_Knee_L', bpy.props.StringProperty(name='FK Knee')),
+    ('FK_Leg_Knee_R', bpy.props.StringProperty(name='FK Knee')),
+    ('IK_Leg_Knee_L', bpy.props.StringProperty(name='IK Knee')),
+    ('IK_Leg_Knee_R', bpy.props.StringProperty(name='IK Knee')),
 ]
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
