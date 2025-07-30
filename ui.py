@@ -276,7 +276,7 @@ class ArmR_MappingPanel(bpy.types.Panel):
         col = self.layout.column()
         # Check if an armature is active
         if obj and obj.type == 'ARMATURE':
-            # Create bone selection fields for each bone involved in Arm L snapping
+            # Create bone selection fields for each bone involved in Arm R snapping
             col.prop_search(context.scene, "FK_Arm_Upper_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Arm_Lower_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Arm_End_R", obj.data, "bones")
@@ -309,7 +309,7 @@ class LegL_MappingPanel(bpy.types.Panel):
         col = self.layout.column()
         # Check if an armature is active
         if obj and obj.type == 'ARMATURE':
-            # Create bone selection fields for each bone involved in Arm L snapping
+            # Create bone selection fields for each bone involved in Leg L snapping
             col.prop_search(context.scene, "FK_Leg_Upper_L", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Knee_L", obj.data, "bones")
             col.prop_search(context.scene, "TWEAK_Leg_Knee_L", obj.data, "bones")
@@ -346,7 +346,7 @@ class LegR_MappingPanel(bpy.types.Panel):
         col = self.layout.column()
         # Check if an armature is active
         if obj and obj.type == 'ARMATURE':
-            # Create bone selection fields for each bone involved in Arm L snapping
+            # Create bone selection fields for each bone involved in Leg R snapping
             col.prop_search(context.scene, "FK_Leg_Upper_R", obj.data, "bones")
             col.prop_search(context.scene, "FK_Leg_Knee_R", obj.data, "bones")
             col.prop_search(context.scene, "TWEAK_Leg_Knee_R", obj.data, "bones")
