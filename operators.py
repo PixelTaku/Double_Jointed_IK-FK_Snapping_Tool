@@ -189,7 +189,7 @@ class LegL_IKtoFK(bpy.types.Operator):
             self.report({'ERROR'}, "Missing or invalid bone names for Leg L IK-FK snapping")
             return {'CANCELLED'}
         # Perform the IK to FK snapping using the retrieved bone objects
-        utilities.snap_IK_to_FK(*bones)
+        utilities.snap_IK_to_FK_knee(*bones)
         return {'FINISHED'}
 
 # --- Leg L FK to IK operator ---
@@ -216,7 +216,7 @@ class LegL_FKtoIK(bpy.types.Operator):
             self.report({'ERROR'}, "Missing or invalid bone names for Leg L FK-IK snapping")
             return {'CANCELLED'}
         # Perform the IK to FK snapping using the retrieved bone objects
-        utilities.snap_FK_to_IK(*bones)
+        utilities.snap_FK_to_IK_knee(*bones)
         return {'FINISHED'}
 
 # -----------------------------------------------
