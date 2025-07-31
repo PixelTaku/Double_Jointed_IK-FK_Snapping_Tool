@@ -11,7 +11,7 @@ class ToolPanel(bpy.types.Panel):
     bl_label = 'Snapping Tool'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     
     # Draw the preset menu button in the panel header
     def draw_header_preset(self, _context):
@@ -215,7 +215,7 @@ class Armature_MappingPanel(bpy.types.Panel):
     bl_label = 'Armature Mapping'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     
     # Draw the preset menu button in the panel header
     def draw_header_preset(self, _context):
@@ -235,7 +235,7 @@ class ArmL_MappingPanel(bpy.types.Panel):
     bl_label = 'Arm L'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     bl_parent_id = "ARMATURE_MAPPING_PT_panel"
     
     def draw(self, context):
@@ -268,7 +268,7 @@ class ArmR_MappingPanel(bpy.types.Panel):
     bl_label = 'Arm R'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     bl_parent_id = "ARMATURE_MAPPING_PT_panel"
     
     def draw(self, context):
@@ -301,7 +301,7 @@ class LegL_MappingPanel(bpy.types.Panel):
     bl_label = 'Leg L'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     bl_parent_id = "ARMATURE_MAPPING_PT_panel"
     
     def draw(self, context):
@@ -338,7 +338,7 @@ class LegR_MappingPanel(bpy.types.Panel):
     bl_label = 'Leg R'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'IK-FK Snap'
+    bl_category = 'Double Joint IK-FK Snap'
     bl_parent_id = "ARMATURE_MAPPING_PT_panel"
     
     def draw(self, context):
