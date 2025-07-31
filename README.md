@@ -19,9 +19,12 @@ I (PixelTaku) made this for a specific rig I was working on and needed some spec
 
 # The Compatible Rig Setup
 <img width="1917" height="1006" alt="Screenshot 2025-07-31 141756" src="https://github.com/user-attachments/assets/e5ad80a3-eaa9-43c2-b209-8decb9fe5391" />
-There are 3 leg rigs overall. The base **def**ormation bones (the bones that the geometry are weighted on) include a thigh, knee, shin, foot, and toe bone. The **FK** setup has the same bones as the DEF bones, just differently named. The **IK** setup is slightly more complex, using a combination of MCH bones and MCH_Parent bones to allow for smooth stretching/disconnecting of the limbs. I followed these two tutorials for the most part:
-- https://www.youtube.com/watch?v=JBIdruWylDQ 
+There are 3 leg rigs overall. The base <b>def</b>ormation bones (the bones that the geometry are weighted on) include a thigh, knee, shin, foot, and toe bone. The <b>FK</b> setup has the same bones as the DEF bones, just differently named. The <b>IK</b> setup is slightly more complex, using a combination of MCH bones and MCH_Parent bones to allow for smooth stretching/disconnecting of the limbs. I followed these two tutorials for the most part:
+
+- https://www.youtube.com/watch?v=JBIdruWylDQ
+
 - https://youtu.be/xEnu_EsnzjI?si=MNFfsbsp1pSkXG2c
+
 I also added two tweak bones on the top of the knee and the shin to address knee popping. The feet rig is also more complicated, with added foot roll and toe wiggle controls, but these aren't used in the IK-FK snapping function.
 
 
