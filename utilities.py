@@ -61,11 +61,13 @@ def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, TWEAK_knee, FK_lower,
     bpy.context.view_layer.update()
     # IK_pole.keyframe_insert(KEYFRAME)
     
+    """
     # Match the IK end's matrix to the FK end's matrix
     IK_end.matrix = FK_end.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     # IK_end.keyframe_insert(KEYFRAME)
+    
     
     # Match the lower and end
     IK_lower.matrix = FK_lower.matrix.copy()
@@ -77,7 +79,7 @@ def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, TWEAK_knee, FK_lower,
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     # IK_knee.keyframe_insert(KEYFRAME)
-    
+    """
    
     # match the TWEAK knee and TWEAK lower to the FK Knee and FK lower respectively
     TWEAK_lower.matrix = FK_lower.matrix.copy()
@@ -111,18 +113,80 @@ def snap_FK_to_IK_knee(IK_upper, IK_knee, TWEAK_knee, IK_lower, TWEAK_lower, IK_
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
 
+    # add a track constraint
+    FK_upper.constraints.new('DAMPED_TRACK')
+    # track to the tweak Knee
+    
+    FK_upper.constraints["Damped Track"].target = bpy.data.objects["DummyMale_RIG"]
+    FK_upper.constraints["Damped Track"].subtarget = IK_knee.name
+    
+    # select the bone, then apply the constraint 
+    obj = bpy.context.active_object
+    bone = obj.data.bones[FK_upper.name]
+    obj.data.bones.active = bone
+
+    bpy.ops.constraint.apply(constraint="Damped Track", owner='BONE', report = True)
+
+    # update view 
+    bpy.context.view_layer.update()
+
+    
+    
+
+
     # Match the FK knee's matrix to the IK knee's matrix
-    FK_knee.matrix = IK_knee.matrix.copy()
+    #FK_knee.matrix = IK_knee.matrix.copy()
     FK_knee.matrix = TWEAK_knee.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     
+    
+    
+    # add a track constraint
+    FK_knee.constraints.new('DAMPED_TRACK')
+    # track to the tweak Knee
+    
+    FK_knee.constraints["Damped Track"].target = bpy.data.objects["DummyMale_RIG"]
+    # The Dummy Thigh doesn't track the tweak in IK
+    FK_knee.constraints["Damped Track"].subtarget = TWEAK_lower.name
+    
+    # select the bone, then apply the constraint 
+    obj = bpy.context.active_object
+    bone = obj.data.bones[FK_knee.name]
+    obj.data.bones.active = bone
+
+    bpy.ops.constraint.apply(constraint="Damped Track", owner='BONE', report = True)
+
+    # update view 
+    bpy.context.view_layer.update()
+    
+    
     # Match the FK lower's matrix to the IK lower's matrix
-    FK_lower.matrix = IK_lower.matrix.copy()
+    #FK_lower.matrix = IK_lower.matrix.copy()
     FK_lower.matrix = TWEAK_lower.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
+    
 
+    # Match the knee and shin to the tweak bones
+    #shoutout to GuiltyGhost in the Animstate Discord
+     # add a track constraint
+    FK_lower.constraints.new('DAMPED_TRACK')
+    # track to the tweak Knee
+    
+    FK_lower.constraints["Damped Track"].target = bpy.data.objects["DummyMale_RIG"]
+    FK_lower.constraints["Damped Track"].subtarget = FK_end.name
+    
+    # select the bone, then apply the constraint 
+    obj = bpy.context.active_object
+    bone = obj.data.bones[FK_lower.name]
+    obj.data.bones.active = bone
+
+    bpy.ops.constraint.apply(constraint="Damped Track", owner='BONE', report = True)
+
+    # update view 
+    bpy.context.view_layer.update()
+    
     # Match the FK end's matrix to the IK end's matrix
     FK_end.matrix = IK_end.matrix.copy()
     # Update the viewport to reflect the change
