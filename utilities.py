@@ -118,7 +118,7 @@ def snap_FK_to_IK_knee(IK_upper, IK_knee, TWEAK_knee, IK_lower, TWEAK_lower, IK_
     # track to the tweak Knee
     
     FK_upper.constraints["Damped Track"].target = bpy.context.active_object
-    FK_upper.constraints["Damped Track"].subtarget = IK_knee.name
+    FK_upper.constraints["Damped Track"].subtarget = TWEAK_knee.name
     
     # select the bone, then apply the constraint 
     obj = bpy.context.active_object
@@ -147,7 +147,7 @@ def snap_FK_to_IK_knee(IK_upper, IK_knee, TWEAK_knee, IK_lower, TWEAK_lower, IK_
     # track to the tweak Knee
     
     FK_knee.constraints["Damped Track"].target = bpy.context.active_object
-    # The Dummy Thigh doesn't track the tweak in IK
+    
     FK_knee.constraints["Damped Track"].subtarget = TWEAK_lower.name
     
     # select the bone, then apply the constraint 
@@ -175,7 +175,7 @@ def snap_FK_to_IK_knee(IK_upper, IK_knee, TWEAK_knee, IK_lower, TWEAK_lower, IK_
     # track to the tweak Knee
     
     FK_lower.constraints["Damped Track"].target = bpy.context.active_object
-    FK_lower.constraints["Damped Track"].subtarget = FK_end.name
+    FK_lower.constraints["Damped Track"].subtarget = IK_end.name
     
     # select the bone, then apply the constraint 
     obj = bpy.context.active_object
