@@ -66,14 +66,19 @@ def snap_IK_to_FK_knee(IK_pole_target, IK_target, FK_knee, TWEAK_knee, FK_lower,
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
     # IK_end.keyframe_insert(KEYFRAME)
-
-    """
+    
+    # Match the lower and end
+    IK_lower.matrix = FK_lower.matrix.copy()
+    # Update the viewport to reflect the change
+    bpy.context.view_layer.update()
+   
     # Match the IK knee's matrix to the FK knee's matrix
     IK_knee.matrix = FK_knee.matrix.copy()
     # Update the viewport to reflect the change
     bpy.context.view_layer.update()
-    IK_knee.keyframe_insert(KEYFRAME)
-    """
+    # IK_knee.keyframe_insert(KEYFRAME)
+    
+   
     # match the TWEAK knee and TWEAK lower to the FK Knee and FK lower respectively
     TWEAK_lower.matrix = FK_lower.matrix.copy()
     # Update the viewport to reflect the change
