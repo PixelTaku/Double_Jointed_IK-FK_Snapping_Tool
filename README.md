@@ -1,5 +1,5 @@
 # IK-FK Snapping Tool WITH KNEES!
-![banner](./Banner.png)
+![github img](./github img.png)
 
 ## Introduction
 IK-FK Snapping Tool is a simple Blender add-on that lets you match poses between IK/FK controls. The original add-on is a fork version of the [IK-FK Snapping](https://github.com/Mystfit/IK-FK-Snapping-for-Blender) add-on by [Mystfit](https://github.com/Mystfit) that adds additional snapping options and improved UI. THIS addon is forked from the [Endertainer's version](https://github.com/Endertainer/IK-FK_Snapping_Tool) in order to add an additional knee bone between the upper and lower leg bones.
