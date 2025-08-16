@@ -15,7 +15,7 @@ With this tool, you can easily snap from IK to FK and FK to IK with just a press
 If you encounter a bug or problems with the arms, you can raise an [issue](https://github.com/Endertainer/IK-FK_Snapping_Tool/issues/new) on the Github repository or join my [Discord](https://discord.com/invite/Xk7RxPq9R5) server. For the legs, reach out to PixelTaku on GitHub or BlueSky.
 
 ## Please Note
-I (PixelTaku) made this for a specific rig I was working on and needed some specific functionality with my IK-FK snapping. It should work in theory if you have a similar rig. I don't intend to work on it beyond what I need for that rig for now, but the code base could be generalized to support non-double kneed rigs again (I just swapped the function out basically) and a rig without tweak bones with some basic branching checks. We'll see how far I get I guess.
+I (PixelTaku) made this for a specific rig I was working on and needed some specific functionality with my IK-FK snapping. It should work in theory if you have a similar rig. I don't intend to work on it beyond what I need for that rig for now, but the code base could be generalized to support non-double kneed rigs again (I just swapped the function out basically) and a rig without tweak bones with some basic branching checks. (You can technically just pass in the regular IK bones for the tweaks if you just have the 3 bone setup, I guess, but allowing the fields to be blank would be a nice feature). We'll see how far I get.
 
 # The Compatible Rig Setup
 <img width="1917" height="1006" alt="Screenshot 2025-07-31 141756" src="https://github.com/user-attachments/assets/e5ad80a3-eaa9-43c2-b209-8decb9fe5391" />
